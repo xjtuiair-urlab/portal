@@ -1,0 +1,44 @@
+---
+// src/components/Footer.astro
+
+const currentYear = new Date().getFullYear();
+
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+
+const getLink = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    if (cleanPath === '') return `${baseUrl}/`;
+    return `${baseUrl}/${cleanPath}`;
+}
+---
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p>📍 Room xx , 99 Yanxiang Road, Xi'an, PR China </p>
+                <p><a href="mailto:?@xjtu.edu.cn">✉️ ?@xjtu.edu.cn</a></p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Useful Links</h3>
+                <a href="https://www.xjtu.edu.cn/" target="_blank">Xi'an Jiaotong University</a>
+                <a href="https://iair.xjtu.edu.cn/" target="_blank">Institute of AI & Robotics</a>
+                <a href="https://gr.xjtu.edu.cn/en/web/pengjuren/">Prof. Pengju Ren</a>
+            </div>
+
+            <div class="footer-col">
+                <img src={getLink("assets/images/logo-cag.png")} alt="Lab Logo">
+            </div>
+
+        </div>
+
+        <!-- 底部版权信息 -->
+        <div class="footer-bottom">
+            &copy; {currentYear} Cognitive Architecture Group @ Institute of AI & Robotics, Xi'an Jiaotong University. All Rights Reserved.
+        </div>
+    </div>
+</footer>

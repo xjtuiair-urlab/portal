@@ -1,0 +1,152 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import { getEntry } from 'astro:content';
+
+const statsEntry = await getEntry('homepage', 'stats');
+const pubsEntry = await getEntry('homepage', 'pubs');
+
+const stats = statsEntry ? statsEntry.data : [];
+const pubs = pubsEntry ? pubsEntry.data : [];
+
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+
+const fixPath = (path: string | undefined) => {
+    if (!path) return "";
+    if (path.startsWith('http')) return path;
+    
+    // 移除 path 开头的斜杠
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    
+    // 强制中间加斜杠
+    return `${baseUrl}/${cleanPath}`;
+};
+---
+
+<Layout title="Home">
+    
+    <Hero />
+
+    <!-- Our Research -->
+    <section class="research-section">
+        <div class="container">
+            <div class="research-grid">
+                <div class="research-text">
+                    <h2 class="section-title">Our Research</h2>
+                    <p class="research-p">
+                        We are focusing on diagnosis and treatment of neurodegenerative diseases. We are building brain-machine interfaces forming closed-loop neuromodulators.
+                    </p>
+                    <p class="research-p">
+                        Also, we are culturing cells and introducing various biosensors for neurotransmitters manipulation methods.
+                    </p>
+                    <a href={fixPath("research")} class="btn">More Information</a>
+                </div>
+                <div class="research-img">
+                    <!-- ✅ 修复图片路径 -->
+                    <img src={fixPath("assets/images/chip.png")} alt="Brain Research" class="brain-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <div class="overview-section">
+        <div class="container">
+            <h2 class="section-title">Overview of CAG —— A Research Group of Excellence</h2>
+            <p class="overview-p">
+                Also, we are culturing cells and introducing various biosensors for neurotransmitters manipulation methods.
+            </p>
+            <a href={fixPath("overview")} class="btn">More Information</a>
+        </div>
+    </div>
+
+    <!-- Publications -->
+    <section class="pubs-section">
+        <div class="container">
+            <h2 class="section-title">Selected publications</h2>
+            <!-- ✅ 修复按钮链接 -->
+            <a href={fixPath("publications")} class="btn btn-dark-outline">More Contributions</a>
+            
+            <div class="pub-grid-home">
+                {pubs.map((paper) => (
+                    <PublicationCard 
+                        title={paper.title || "Untitled"}
+                        year={paper.year || "202X"}
+                        category={paper.category || "Journal"}
+                        image={fixPath(paper.image)}
+                        link={paper.link}
+                    />
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Team & Stats -->
+    <div class="team-section">
+        <div class="container">
+            <div class="stats-bar">
+                {stats.map((item) => (
+                    <div class="stat-item">
+                        <h2>{item.value}</h2>
+                        <p>{item.label}</p>
+                    </div>
+                ))}
+                <div class="stat-btn-wrapper">
+                     <!-- ✅ 修复按钮链接 -->
+                     <a href={fixPath("people")} class="btn btn-stats">Meet our CenBRAINers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Talents -->
+    <section class="talents-section">
+        <div class="container">
+            <div class="talents-grid">
+                <div class="talents-content">
+                    <h2 class="section-title">Calling For Talents</h2>
+                    <p class="talents-text">Any interests in open positions, please send us a message.</p>
+                    <!-- ✅ 修复按钮链接 -->
+                    <a href={fixPath("contact")} class="btn">Send Message</a>
+                </div>
+                <div class="talents-visual">
+                    <!-- ✅ 修复图片路径 -->
+                    <img src={fixPath("assets/images/chip.png")} alt="Talent Network">
+                </div>
+            </div>
+        </div>
+    </section>
+
+</Layout>
+
+<style>
+    /* 保持原来的样式 */
+    .research-grid { display: flex; align-items: center; gap: 60px; }
+    .research-text { flex: 1; }
+    .research-img { flex: 1; text-align: center; }
+    .brain-img { width: 100%; max-width: 500px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
+
+    .overview-section { background: #333; height: 500px; display: flex; align-items: center; color: white; position: relative; }
+    .overview-title { font-size: 36px; font-weight: 600; margin-bottom: 5px; }
+    
+    .pubs-section { padding-bottom: 40px; }
+    .btn-dark-outline { background: var(--primary-blue); margin-bottom: 40px; }
+    .pub-grid-home { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    .team-section { background: #333; height: 600px; display: flex; align-items: flex-end; padding-bottom: 60px; }
+    .stats-bar { background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); border-radius: 10px; padding: 30px 50px; color: white; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .stat-item h2 { font-size: 48px; font-weight: 700; line-height: 1; margin-bottom: 5px; }
+    .stat-item p { font-size: 12px; letter-spacing: 1px; opacity: 0.8; }
+    .btn-stats { margin: 0; }
+
+    .talents-section { background: #f9f9f9; }
+    .talents-grid { display: flex; align-items: center; justify-content: space-between; }
+    .talents-content { max-width: 400px; }
+    .talents-visual img { max-width: 500px; }
+
+    @media (max-width: 1024px) { .pub-grid-home { grid-template-columns: repeat(2, 1fr); } .stats-bar { flex-wrap: wrap; gap: 30px; justify-content: center; text-align: center; } }
+    @media (max-width: 768px) { .research-grid, .talents-grid { flex-direction: column; text-align: center; } .pub-grid-home { grid-template-columns: 1fr; } }
+</style>

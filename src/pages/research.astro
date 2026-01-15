@@ -1,0 +1,24 @@
+---
+// src/pages/research.astro
+import SidebarLayout from '../layouts/SidebarLayout.astro';
+---
+
+<!-- 
+    category="research" 会自动调用 Research 的侧边栏菜单
+    bannerTitle="Research" 会显示在蓝色横幅上
+-->
+<SidebarLayout title="Research Overview" bannerTitle="Research" category="research">
+    
+    <h2 class="content-title">Overview of Our Research</h2>
+    
+    <p>We are focusing on diagnosis and treatment of neurodegenerative diseases...</p>
+    
+    <img src="/assets/images/research-overview.jpg" style="width: 100%; margin: 20px 0; border-radius: 8px;">
+    
+    <h3>Key Directions</h3>
+    <ul>
+        <li>Direction A</li>
+        <li>Direction B</li>
+    </ul>
+
+</SidebarLayout>

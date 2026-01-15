@@ -1,0 +1,193 @@
+---
+// src/components/Hero.astro
+import { getEntry } from 'astro:content';
+
+// 1. 获取 Base URL (用于修复图片路径)
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+
+const fixPath = (path: string | undefined) => {
+    if (!path) return "";
+    if (path.startsWith('http')) return path;
+    
+    // 移除 path 开头的斜杠
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    
+    // 强制中间加斜杠
+    return `${baseUrl}/${cleanPath}`;
+};
+
+// 3. 读取数据
+const newsEntry = await getEntry('homepage', 'news');
+const newsList = newsEntry ? newsEntry.data : [];
+---
+
+<section class="hero-typing">
+    <!-- 增加 hero-inner 类用于控制居中 -->
+    <div class="container hero-inner">
+        
+        <!-- 打字机内容区域 -->
+        <div class="typing-content">
+            <h1 class="type-title">
+                <span id="text-title"></span><span class="cursor" id="cursor-title">&nbsp;</span>
+            </h1>
+            <div class="hero-line"></div>
+            <p class="type-subtitle">
+                <span id="text-subtitle"></span><span class="cursor hidden" id="cursor-sub">&nbsp;</span>
+            </p>
+        </div>
+
+        <!-- News Overlay -->
+        <div class="hero-news-overlay" id="hero-news">
+            {newsList.map((item) => (
+                <div class="news-card">
+                    <!-- ✅ 使用 fixPath 修复图片路径 -->
+                    <img src={fixPath(item.image)} alt="News Image">
+                    <div class="news-content">
+                        <span class="news-date">{item.date}</span>
+                        <h4 class="news-title">{item.title}</h4>
+                        <a href={item.link || "#"} class="read-more">Learn More ➝</a>
+                    </div>
+                </div>
+            ))}
+        </div>
+        
+    </div>
+</section>
+
+<style>
+    /* 1. 修复背景半屏问题 */
+    .hero-typing {
+        position: relative;
+        width: 100%;
+        /* ✅ 关键：强制最小高度为 100vh (整个屏幕高度) */
+        min-height: 100vh; 
+        /* ✅ 关键：确保背景色铺满，防止内容溢出时底部出现白边 */
+        background-color: #000000;
+        background-image: linear-gradient(#111 1px, transparent 1px),
+                          linear-gradient(90deg, #111 1px, transparent 1px);
+        background-size: 50px 50px;
+        overflow: hidden; /* 防止光标动画撑出滚动条 */
+    }
+
+    /* 2. 修复文字重叠 & 居中问题 */
+    .hero-inner {
+        height: 100%;
+        min-height: 100vh; /* 确保容器跟父级一样高 */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        
+        /* ❌ 删除 justify-content: center; (不要让它自动垂直居中，容易撞车) */
+        /* ✅ 改为： */
+        justify-content: flex-start; /* 内容从上往下排 */
+        padding-top: 25vh; /* 也就是让文字大概在屏幕 1/4 处开始，视觉上比较平衡 */
+        
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* 文字区域样式 */
+    .typing-content {
+        z-index: 5;
+        position: relative;
+        /* 防止文字太宽 */
+        max-width: 900px; 
+    }
+
+    /* 大标题微调 */
+    .type-title {
+        font-size: 5rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    /* News 面板保持在底部 */
+    .hero-news-overlay {
+        position: absolute;
+        bottom: 80px; /* ✅ 稍微再抬高一点，或者根据需求调整 */
+        left: 0;
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        z-index: 10;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        visibility: hidden;
+        padding: 0 20px; /* 左右留边 */
+    }
+
+    .hero-news-overlay.fade-in-up {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+        .type-title { font-size: 3rem; }
+        .hero-inner { padding-top: 150px; } /* 手机上文字靠上一点 */
+        .hero-news-overlay {
+            position: relative; /* 手机上取消绝对定位，防止内容太多显示不全 */
+            bottom: auto;
+            margin-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
+</style>
+
+<!-- JS 脚本 -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const titleText = "CAG @ IAIR";
+        const subText = "Cognitive Architecture Group, Institute of AI & Robotics, Xi'an Jiaotong University";
+        
+        const titleElement = document.getElementById('text-title');
+        const subElement = document.getElementById('text-subtitle');
+        const lineElement = document.querySelector('.hero-line') as HTMLElement;
+        const cursorTitle = document.getElementById('cursor-title');
+        const cursorSub = document.getElementById('cursor-sub');
+        const newsPanel = document.getElementById('hero-news');
+        
+        if(!titleElement) return;
+
+        let titleIndex = 0;
+        let subIndex = 0;
+
+        function typeTitle() {
+            if (titleIndex < titleText.length) {
+                if(titleElement) titleElement.textContent += titleText.charAt(titleIndex);
+                titleIndex++;
+                setTimeout(typeTitle, 80);
+            } else {
+                setTimeout(expandLine, 300);
+            }
+        }
+
+        function expandLine() {
+            if(lineElement) lineElement.style.width = "100%";
+            setTimeout(() => {
+                if(cursorTitle) cursorTitle.classList.add('hidden');
+                if(cursorSub) cursorSub.classList.remove('hidden');
+                typeSubtitle();
+            }, 1000);
+        }
+
+        function typeSubtitle() {
+            if (subIndex < subText.length) {
+                if(subElement) subElement.textContent += subText.charAt(subIndex);
+                subIndex++;
+                setTimeout(typeSubtitle, 30);
+            } else {
+                setTimeout(() => { if(cursorSub) cursorSub.classList.add('hidden'); }, 1000);
+                setTimeout(() => { if(newsPanel) newsPanel.classList.add('fade-in-up'); }, 500);
+            }
+        }
+
+        setTimeout(typeTitle, 500);
+    });
+</script>
