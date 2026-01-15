@@ -1,0 +1,43 @@
+name: Deploy Astro Site to GitHub Pages
+
+on:
+  # 每次推送到 main 分支时触发
+  push:
+    branches: [ main ]
+  # 允许手动触发
+  workflow_dispatch:
+
+# 设置权限 (必须)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 并发控制：如果有新提交，取消正在进行的旧构建
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+        # withastro/action 是 Astro 官方出的全自动脚本
+        # 它会自动识别 npm/pnpm/yarn，自动 build，自动处理缓存
+        # 只要你的 astro.config.mjs 配对了，这里什么都不用改
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
