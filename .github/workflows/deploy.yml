@@ -27,9 +27,8 @@ jobs:
 
       - name: Install, build, and upload your site
         uses: withastro/action@v2
-        # withastro/action 是 Astro 官方出的全自动脚本
-        # 它会自动识别 npm/pnpm/yarn，自动 build，自动处理缓存
-        # 只要你的 astro.config.mjs 配对了，这里什么都不用改
+        with:
+          package-manager: bun
 
   deploy:
     needs: build
