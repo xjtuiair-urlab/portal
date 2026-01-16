@@ -21,20 +21,32 @@ const peopleCollection = defineCollection({
     name: z.string(),
     image: z.string(),
     since: z.string().optional(),
+    link: z.string().optional(),
   }))
 })
 
-const news = defineCollection({
+const newsCollection = defineCollection({
+  type: 'data',
+  schema: z.array(z.object({
+    title: z.string(),
+    date: z.string(),
+    image: z.string(),
+    link: z.string(),
+  }))
+})
+
+const resourceCollection = defineCollection({
   type: 'data',
   schema: z.array(z.object({
     name: z.string(),
-    image: z.string(),
-    link: z.string(),
+    description: z.string(),
+    equipments: z.array(z.string()),
   }))
 })
 
 export const collections = {
   'homepage': homepageCollection,
   'people': peopleCollection,
-  'news': news,
+  'news': newsCollection,
+  'resource': resourceCollection,
 };

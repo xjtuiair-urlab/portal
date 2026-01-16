@@ -1,11 +1,11 @@
-- value: 1000
+- value: 2010
   label: FOUNDED
 
-- value: 1000
-  label: RESEARCH STAFFS
+- value: 2
+  label: TEACHERS
 
-- value: 1000
-  label: PH.D. STUDENTS
+- value: 3
+  label: STUDENTS
 
-- value: 1000
-  label: ASSISTANTS
+- value: 6
+  label: INTERNS

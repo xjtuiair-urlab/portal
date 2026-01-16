@@ -11,7 +11,7 @@ const getLink = (path: string) => {
 }
 
 // 3. 读取数据
-const newsEntry = await getEntry('homepage', 'news');
+const newsEntry = await getEntry('news', 'news');
 const newsList = newsEntry ? newsEntry.data : [];
 ---
 

@@ -10,21 +10,171 @@ const getLink = (path: string) => {
     return `${baseUrl}/${cleanPath}`;
 }
 
-// 3. 读取数据
 const teachersEntry = await getEntry('people', 'teachers');
 const teachersList = teachersEntry ? teachersEntry.data : [];
+
+const studentsEntry = await getEntry('people', 'student');
+const studentsList = studentsEntry ? studentsEntry.data : [];
+
+const internsEntry = await getEntry('people', 'interns');
+const internsList = internsEntry ? internsEntry.data : [];
 ---
 
-<SidebarLayout title="Selected Publications" bannerTitle="Publications" category="publications">
+<SidebarLayout title="Meet Our CAGers" bannerTitle="People" category="people">
     
     <h2 class="content-title">Teachers</h2>
+    <div class="people-grid">
+        {teachersList.map((person) => (
+            <div class="person-card">
+                {person.link ? (
+                    <a href={person.link} target="_blank" rel="noopener noreferrer" class="person-link">
+                        <div class="person-image">
+                            <img src={getLink(person.image)} alt={person.name} />
+                        </div>
+                        <div class="person-info">
+                            <h3>{person.name}</h3>
+                            {person.since && <p class="since">{person.since}</p>}
+                        </div>
+                    </a>
+                ) : (
+                    <div class="person-content">
+                        <div class="person-image">
+                            <img src={getLink(person.image)} alt={person.name} />
+                        </div>
+                        <div class="person-info">
+                            <h3>{person.name}</h3>
+                            {person.since && <p class="since">{person.since}</p>}
+                        </div>
+                    </div>
+                )}
+            </div>
+        ))}
+    </div>
 
     <hr/>
 
     <h2 class="content-title">Students</h2>
+    <div class="people-grid">
+        {studentsList.map((person) => (
+            <div class="person-card">
+                {person.link ? (
+                    <a href={person.link} target="_blank" rel="noopener noreferrer" class="person-link">
+                        <div class="person-image">
+                            <img src={getLink(person.image)} alt={person.name} />
+                        </div>
+                        <div class="person-info">
+                            <h3>{person.name}</h3>
+                            {person.since && <p class="since">{person.since}</p>}
+                        </div>
+                    </a>
+                ) : (
+                    <div class="person-content">
+                        <div class="person-image">
+                            <img src={getLink(person.image)} alt={person.name} />
+                        </div>
+                        <div class="person-info">
+                            <h3>{person.name}</h3>
+                            {person.since && <p class="since">Since {person.since}</p>}
+                        </div>
+                    </div>
+                )}
+            </div>
+        ))}
+    </div>
 
     <hr/>
 
     <h2 class="content-title">Interns</h2>
+    <div class="people-grid">
+        {internsList.map((person) => (
+            <div class="person-card">
+                {person.link ? (
+                    <a href={person.link} target="_blank" rel="noopener noreferrer" class="person-link">
+                        <div class="person-image">
+                            <img src={getLink(person.image)} alt={person.name} />
+                        </div>
+                        <div class="person-info">
+                            <h3>{person.name}</h3>
+                            {person.since && <p class="since">{person.since}</p>}
+                        </div>
+                    </a>
+                ) : (
+                    <div class="person-content">
+                        <div class="person-image">
+                            <img src={getLink(person.image)} alt={person.name} />
+                        </div>
+                        <div class="person-info">
+                            <h3>{person.name}</h3>
+                            {person.since && <p class="since">Since {person.since}</p>}
+                        </div>
+                    </div>
+                )}
+            </div>
+        ))}
+    </div>
 
 </SidebarLayout>
+
+<style>
+    .content-title {
+        font-size: 2rem;
+        color: var(--primary-blue);
+        margin-bottom: 30px;
+    }
+
+    .people-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .person-card {
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .person-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .person-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .person-image {
+        width: 100%;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        background: #f0f0f0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .person-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .person-info h3 {
+        font-size: 1.2rem;
+        margin: 0;
+        color: var(--text-dark);
+    }
+
+    .since {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    hr {
+        margin: 60px 0;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+</style>

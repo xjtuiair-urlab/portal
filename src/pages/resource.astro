@@ -1,5 +1,6 @@
 ---
 import SidebarLayout from '../layouts/SidebarLayout.astro';
+import { getEntry } from 'astro:content';
 
 const rawBase = import.meta.env.BASE_URL;
 const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
@@ -8,22 +9,82 @@ const getLink = (path: string) => {
     if (cleanPath === '') return `${baseUrl}/`;
     return `${baseUrl}/${cleanPath}`;
 }
+
+const serversEntry = await getEntry('resource', 'servers');
+const servers = serversEntry ? serversEntry.data : [];
 ---
 
-<SidebarLayout title="Selected Publications" bannerTitle="Publications" category="publications">
+<SidebarLayout title="Resource and Facilities" bannerTitle="Resource" category="resource">
     
-    <h2 class="content-title">Conference & Journal Papers</h2>
+    <h2 class="content-title">Servers</h2>
 
-    <h3 class="content-title">2026</h3>
-    <h3 class="content-title">2025</h3>
-    <h3 class="content-title">2024</h3>
-
-    <hr/>
-
-    <h2 class="content-title">Book Chapters</h2>
-
-    <hr/>
-
-    <h2 class="content-title">Newsletters</h2>
+    <div class="server-grid">
+        {servers.map((server) => (
+            <div class="server-card">
+                <h3 class="server-name">{server.name}</h3>
+                <p class="server-desc">{server.description}</p>
+                <div class="equipment-list">
+                    <h4>Equipments:</h4>
+                    <ul>
+                        {server.equipments.map((item) => (
+                            <li>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        ))}
+    </div>
 
 </SidebarLayout>
+
+<style>
+    .content-title {
+        font-size: 2rem;
+        color: var(--primary-blue);
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--primary-blue);
+        padding-bottom: 10px;
+    }
+
+    .server-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .server-card {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 12px;
+        border-left: 5px solid var(--primary-blue);
+    }
+
+    .server-name {
+        color: var(--primary-blue);
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .server-desc {
+        color: var(--text-light);
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+
+    .equipment-list h4 {
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: var(--text-dark);
+    }
+
+    .equipment-list ul {
+        list-style: disc;
+        padding-left: 20px;
+    }
+
+    .equipment-list li {
+        margin-bottom: 8px;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+    }
+</style>

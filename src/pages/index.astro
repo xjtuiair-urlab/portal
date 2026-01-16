@@ -1,15 +1,9 @@
 ---
-// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import PublicationCard from '../components/PublicationCard.astro';
 import { getEntry } from 'astro:content';
 
-const statsEntry = await getEntry('homepage', 'stats');
-const pubsEntry = await getEntry('homepage', 'pubs');
-
-const stats = statsEntry ? statsEntry.data : [];
-const pubs = pubsEntry ? pubsEntry.data : [];
 
 const rawBase = import.meta.env.BASE_URL;
 const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
@@ -18,13 +12,18 @@ const getLink = (path: string) => {
     if (cleanPath === '') return `${baseUrl}/`;
     return `${baseUrl}/${cleanPath}`;
 }
+
+const statsEntry = await getEntry('homepage', 'stats');
+const pubsEntry = await getEntry('homepage', 'pubs');
+
+const stats = statsEntry ? statsEntry.data : [];
+const pubs = pubsEntry ? pubsEntry.data : [];
 ---
 
 <Layout title="Home">
     
     <Hero />
 
-    <!-- Our Research -->
     <section class="research-section">
         <div class="container">
             <div class="research-grid">
@@ -39,45 +38,13 @@ const getLink = (path: string) => {
                     <a href={getLink("research")} class="btn">More Information</a>
                 </div>
                 <div class="research-img">
-                    <img src={getLink("assets/images/chip.png")} alt="Brain Research" class="brain-img">
+                    <img src={getLink("assets/background/chip.png")} alt="Research" class="brain-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Overview Section -->
-    <div class="overview-section">
-        <div class="container">
-            <h2 class="section-title">Overview of CAG —— A Research Group of Excellence</h2>
-            <p class="overview-p">
-                Also, we are culturing cells and introducing various biosensors for neurotransmitters manipulation methods.
-            </p>
-            <a href={getLink("overview")} class="btn">More Information</a>
-        </div>
-    </div>
-
-    <!-- Publications -->
-    <section class="pubs-section">
-        <div class="container">
-            <h2 class="section-title">Selected publications</h2>
-            <a href={getLink("publications")} class="btn btn-dark-outline">More Contributions</a>
-            
-            <div class="pub-grid-home">
-                {pubs.map((paper) => (
-                    <PublicationCard 
-                        title={paper.title || "Untitled"}
-                        year={paper.year || "202X"}
-                        category={paper.category || "Journal"}
-                        image={getLink(paper.image)}
-                        link={paper.link}
-                    />
-                ))}
-            </div>
-        </div>
-    </section>
-
-    <!-- Team & Stats -->
-    <div class="team-section">
+    <div class="team-section" style={`background-image: url(${getLink("assets/background/member-photo.png")})`}>
         <div class="container">
             <div class="stats-bar">
                 {stats.map((item) => (
@@ -87,23 +54,52 @@ const getLink = (path: string) => {
                     </div>
                 ))}
                 <div class="stat-btn-wrapper">
-                    <a href={getLink("people")} class="btn btn-stats">Meet our CenBRAINers</a>
+                    <a href={getLink("people")} class="btn btn-stats">Meet our CAGers</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Talents -->
+    <section class="pubs-section">
+        <div class="container">
+            <h2 class="section-title">Selected publications</h2>
+            <a href={getLink("pubs")} class="btn btn-dark-outline">More Contributions</a>
+            
+            <div class="pub-grid-home">
+                {pubs.map((paper) => (
+                    <PublicationCard 
+                        title={paper.title || "Untitled"}
+                        year={paper.year || "202X"}
+                        category={paper.category || "Journal"}
+                        image={getLink(paper.image ? paper.image : "assets/background/paper.png")}
+                        link={paper.link}
+                    />
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <div class="resource-section" style={`background-image: url(${getLink("assets/background/server.png")})`}>
+        <div class="container">
+            <h2 class="section-title">Adequate Resource and Facilities</h2>
+            <p class="resource-p">
+                Equipped with high performance computing workstations, 
+                the lab provides an ideal environment for pioneering research and innovation.
+            </p>
+            <a href={getLink("resource")} class="btn">More Information</a>
+        </div>
+    </div>
+
     <section class="talents-section">
         <div class="container">
             <div class="talents-grid">
                 <div class="talents-content">
                     <h2 class="section-title">Calling For Talents</h2>
-                    <p class="talents-text">Any interests in open positions, please send us a message.</p>
-                    <a href={getLink("contact")} class="btn">Send Message</a>
+                    <p class="talents-text">Contact us, if any interests in open positions!</p>
+                    <a href={getLink("join")} class="btn">Send Message</a>
                 </div>
                 <div class="talents-visual">
-                    <img src={getLink("assets/images/chip.png")} alt="Talent Network">
+                    <img src={getLink("assets/background/chip.png")} alt="Talent Network">
                 </div>
             </div>
         </div>
@@ -117,14 +113,43 @@ const getLink = (path: string) => {
     .research-img { flex: 1; text-align: center; }
     .brain-img { width: 100%; max-width: 500px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
 
-    .overview-section { background: #333; height: 500px; display: flex; align-items: center; color: white; position: relative; }
-    .overview-title { font-size: 36px; font-weight: 600; margin-bottom: 5px; }
+    .resource-section { 
+        background-size: cover;
+        background-position: center;
+        height: 500px; 
+        display: flex; 
+        align-items: center; 
+        color: white; 
+        position: relative; 
+    }
+    .resource-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+    .resource-section .container {
+        position: relative;
+        z-index: 2;
+    }
+    .resource-title { font-size: 36px; font-weight: 600; margin-bottom: 5px; }
     
     .pubs-section { padding-bottom: 40px; }
     .btn-dark-outline { background: var(--primary-blue); margin-bottom: 40px; }
     .pub-grid-home { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
-    .team-section { background: #333; height: 600px; display: flex; align-items: flex-end; padding-bottom: 60px; }
+    .team-section { 
+        background-size: cover;
+        background-position: center;
+        height: 600px; 
+        display: flex; 
+        align-items: flex-end; 
+        padding-bottom: 60px; 
+    }
     .stats-bar { background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); border-radius: 10px; padding: 30px 50px; color: white; display: flex; justify-content: space-between; align-items: center; width: 100%; }
     .stat-item h2 { font-size: 48px; font-weight: 700; line-height: 1; margin-bottom: 5px; }
     .stat-item p { font-size: 12px; letter-spacing: 1px; opacity: 0.8; }
