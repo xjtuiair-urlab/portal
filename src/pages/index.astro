@@ -13,17 +13,11 @@ const pubs = pubsEntry ? pubsEntry.data : [];
 
 const rawBase = import.meta.env.BASE_URL;
 const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
-
-const fixPath = (path: string | undefined) => {
-    if (!path) return "";
-    if (path.startsWith('http')) return path;
-    
-    // 移除 path 开头的斜杠
+const getLink = (path: string) => {
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    
-    // 强制中间加斜杠
+    if (cleanPath === '') return `${baseUrl}/`;
     return `${baseUrl}/${cleanPath}`;
-};
+}
 ---
 
 <Layout title="Home">
@@ -42,11 +36,10 @@ const fixPath = (path: string | undefined) => {
                     <p class="research-p">
                         Also, we are culturing cells and introducing various biosensors for neurotransmitters manipulation methods.
                     </p>
-                    <a href={fixPath("research")} class="btn">More Information</a>
+                    <a href={getLink("research")} class="btn">More Information</a>
                 </div>
                 <div class="research-img">
-                    <!-- ✅ 修复图片路径 -->
-                    <img src={fixPath("assets/images/chip.png")} alt="Brain Research" class="brain-img">
+                    <img src={getLink("assets/images/chip.png")} alt="Brain Research" class="brain-img">
                 </div>
             </div>
         </div>
@@ -59,7 +52,7 @@ const fixPath = (path: string | undefined) => {
             <p class="overview-p">
                 Also, we are culturing cells and introducing various biosensors for neurotransmitters manipulation methods.
             </p>
-            <a href={fixPath("overview")} class="btn">More Information</a>
+            <a href={getLink("overview")} class="btn">More Information</a>
         </div>
     </div>
 
@@ -67,8 +60,7 @@ const fixPath = (path: string | undefined) => {
     <section class="pubs-section">
         <div class="container">
             <h2 class="section-title">Selected publications</h2>
-            <!-- ✅ 修复按钮链接 -->
-            <a href={fixPath("publications")} class="btn btn-dark-outline">More Contributions</a>
+            <a href={getLink("publications")} class="btn btn-dark-outline">More Contributions</a>
             
             <div class="pub-grid-home">
                 {pubs.map((paper) => (
@@ -76,7 +68,7 @@ const fixPath = (path: string | undefined) => {
                         title={paper.title || "Untitled"}
                         year={paper.year || "202X"}
                         category={paper.category || "Journal"}
-                        image={fixPath(paper.image)}
+                        image={getLink(paper.image)}
                         link={paper.link}
                     />
                 ))}
@@ -95,8 +87,7 @@ const fixPath = (path: string | undefined) => {
                     </div>
                 ))}
                 <div class="stat-btn-wrapper">
-                     <!-- ✅ 修复按钮链接 -->
-                     <a href={fixPath("people")} class="btn btn-stats">Meet our CenBRAINers</a>
+                    <a href={getLink("people")} class="btn btn-stats">Meet our CenBRAINers</a>
                 </div>
             </div>
         </div>
@@ -109,12 +100,10 @@ const fixPath = (path: string | undefined) => {
                 <div class="talents-content">
                     <h2 class="section-title">Calling For Talents</h2>
                     <p class="talents-text">Any interests in open positions, please send us a message.</p>
-                    <!-- ✅ 修复按钮链接 -->
-                    <a href={fixPath("contact")} class="btn">Send Message</a>
+                    <a href={getLink("contact")} class="btn">Send Message</a>
                 </div>
                 <div class="talents-visual">
-                    <!-- ✅ 修复图片路径 -->
-                    <img src={fixPath("assets/images/chip.png")} alt="Talent Network">
+                    <img src={getLink("assets/images/chip.png")} alt="Talent Network">
                 </div>
             </div>
         </div>
@@ -123,7 +112,6 @@ const fixPath = (path: string | undefined) => {
 </Layout>
 
 <style>
-    /* 保持原来的样式 */
     .research-grid { display: flex; align-items: center; gap: 60px; }
     .research-text { flex: 1; }
     .research-img { flex: 1; text-align: center; }

@@ -1,0 +1,21 @@
+---
+import SidebarLayout from '../layouts/SidebarLayout.astro';
+import { getEntry } from 'astro:content';
+
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+const getLink = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    if (cleanPath === '') return `${baseUrl}/`;
+    return `${baseUrl}/${cleanPath}`;
+}
+
+const newsEntry = await getEntry('news', 'news');
+const newsList = newsEntry ? newsEntry.data : [];
+---
+
+<SidebarLayout title="News" bannerTitle="News" category="news">
+    
+    
+
+</SidebarLayout>

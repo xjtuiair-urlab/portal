@@ -1,0 +1,17 @@
+---
+import SidebarLayout from '../layouts/SidebarLayout.astro';
+
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+const getLink = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    if (cleanPath === '') return `${baseUrl}/`;
+    return `${baseUrl}/${cleanPath}`;
+}
+---
+
+<SidebarLayout title="Join us" bannerTitle="Join us" category="join">
+    
+    
+
+</SidebarLayout>

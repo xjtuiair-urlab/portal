@@ -1,0 +1,30 @@
+---
+import SidebarLayout from '../layouts/SidebarLayout.astro';
+import { getEntry } from 'astro:content';
+
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+const getLink = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    if (cleanPath === '') return `${baseUrl}/`;
+    return `${baseUrl}/${cleanPath}`;
+}
+
+// 3. 读取数据
+const teachersEntry = await getEntry('people', 'teachers');
+const teachersList = teachersEntry ? teachersEntry.data : [];
+---
+
+<SidebarLayout title="Selected Publications" bannerTitle="Publications" category="publications">
+    
+    <h2 class="content-title">Teachers</h2>
+
+    <hr/>
+
+    <h2 class="content-title">Students</h2>
+
+    <hr/>
+
+    <h2 class="content-title">Interns</h2>
+
+</SidebarLayout>

@@ -1,11 +1,8 @@
 ---
-// src/components/Footer.astro
-
 const currentYear = new Date().getFullYear();
 
 const rawBase = import.meta.env.BASE_URL;
 const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
-
 const getLink = (path: string) => {
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
     if (cleanPath === '') return `${baseUrl}/`;
@@ -31,12 +28,11 @@ const getLink = (path: string) => {
             </div>
 
             <div class="footer-col">
-                <img src={getLink("assets/images/logo-cag.png")} alt="Lab Logo">
+                <img src={getLink("assets/logo/cag.png")} alt="Lab Logo">
             </div>
 
         </div>
 
-        <!-- 底部版权信息 -->
         <div class="footer-bottom">
             &copy; {currentYear} Cognitive Architecture Group @ Institute of AI & Robotics, Xi'an Jiaotong University. All Rights Reserved.
         </div>

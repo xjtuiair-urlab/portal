@@ -1,24 +1,112 @@
 ---
-// src/pages/research.astro
 import SidebarLayout from '../layouts/SidebarLayout.astro';
+
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
+const getLink = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    if (cleanPath === '') return `${baseUrl}/`;
+    return `${baseUrl}/${cleanPath}`;
+}
 ---
 
-<!-- 
-    category="research" 会自动调用 Research 的侧边栏菜单
-    bannerTitle="Research" 会显示在蓝色横幅上
--->
-<SidebarLayout title="Research Overview" bannerTitle="Research" category="research">
+<SidebarLayout title="Overview of Our Research" bannerTitle="Research" category="research">
     
-    <h2 class="content-title">Overview of Our Research</h2>
+    <h2 class="content-title">Embodied AI</h2>
     
-    <p>We are focusing on diagnosis and treatment of neurodegenerative diseases...</p>
+    <p>
+        As artificial intelligence systems increasingly interact with the physical world, 
+        the field of Embodied AI focuses on developing agents that can perceive, reason, 
+        and act within dynamic environments. Moving beyond static datasets, it tackles the 
+        core challenge of integrating sensory understanding with physical action to achieve 
+        complex tasks. Covering areas from robotic navigation to interactive task completion, 
+        our core exploration centers on building intelligent systems that learn from and adapt 
+        to the real world through embodied experiences.
+    </p>
+
+    <h3 class="content-title">Vision-Language-Action Models</h3>
+
+    <p>
+        The integration of vision, language, and action represents a frontier in creating generalist 
+        robotic agents. Vision-Language-Action (VLA) models are challenged by the need to ground 
+        linguistic instructions and visual perception into precise, sequential physical actions. 
+        Spanning the domains of multimodal learning, robot control, and real-world deployment, our 
+        key work involves developing unified models that translate high-level commands into adaptive and safe robotic behaviors.
+    </p>
     
-    <img src="/assets/images/research-overview.jpg" style="width: 100%; margin: 20px 0; border-radius: 8px;">
-    
-    <h3>Key Directions</h3>
+    <video controls style="width: 33%; margin: 20px 0; border-radius: 8px;">
+        <source src={getLink("assets/research/embodied1.mp4")} type="video/mp4">
+    </video>
+
+    <video controls style="width: 33%; margin: 20px 0; border-radius: 8px;">
+        <source src={getLink("assets/research/embodied2.mp4")} type="video/mp4">
+    </video>
+
+    <video controls style="width: 33%; margin: 20px 0; border-radius: 8px;">
+        <source src={getLink("assets/research/embodied3.mp4")} type="video/mp4">
+    </video>
+
     <ul>
-        <li>Direction A</li>
-        <li>Direction B</li>
+        <li>Paper A</li>
+        <li>Paper B</li>
     </ul>
+    
+    <hr/>
+
+    <h2 class="content-title">Emerging Computing Architecture</h2>
+
+    <p>
+        As the traditional von Neumann architecture faces severe bottlenecks due to the "memory wall" 
+        and "power wall," emerging compute architectures, such as Processing-in-Memory (PIM) and 
+        Computing-in-Memory (CIM), have become a pivotal paradigm shift in modern integrated circuits.
+    </p>
+
+    <h3 class="content-title">Computing-in-Memory (CIM) Architecture</h3>
+
+    <p>
+        To break the "memory wall" that plagues data movement between separate processing and memory units, 
+        Compute-In-Memory (CIM) architecture emerges as a paradigm-shifting solution. It is challenged by 
+        the design of reliable, high-density, and non-volatile memory devices capable of performing analog 
+        computations in-place. Covering material science, circuit design, and architecture innovation, our 
+        major thrust is on realizing CIM systems that drastically accelerate core operations like matrix-vector 
+        multiplication for next-generation AI hardware.
+    </p>
+
+    <img src={getLink("assets/research/cim.png")} style="width: 100%; margin: 20px 0; border-radius: 8px;">
+    
+    <ul>
+        <li>Paper A</li>
+        <li>Paper B</li>
+    </ul>
+
+    <hr/>
+
+    <h2 class="content-title">Efficient AI</h2>
+
+    <p>
+        As state-of-the-art AI models grow exponentially in size and resource requirements, their deployment in 
+        real-world, resource-constrained settings becomes profoundly difficult. Efficient AI addresses the critical 
+        challenge of maximizing model performance while minimizing computational cost, energy consumption, and memory 
+        footprint. Spanning techniques from algorithm design to hardware-aware optimization, our central mission is 
+        to develop methodologies that make advanced AI capabilities accessible, sustainable, and scalable.
+    </p>
+
+    <h3 class="content-title">Model and Dataset Distillation</h3>
+
+    <p>
+        In response to the prohibitive cost of training and deploying massive models on enormous datasets, distillation 
+        techniques aim to capture essential knowledge into compact forms. Model and Dataset Distillation is challenged 
+        by efficiently transferring the capabilities of a large "teacher" network into a small "student" or synthesizing 
+        a small, informative dataset that preserves the utility of a large original one. Covering knowledge transfer, 
+        core-set selection, and synthetic data generation, our key achievement lies in creating highly portable and 
+        efficient representations that maintain high task performance.
+    </p>
+    
+    <ul>
+        <li>Paper A</li>
+        <li>Paper B</li>
+    </ul>
+
+
 
 </SidebarLayout>

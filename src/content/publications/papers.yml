@@ -1,0 +1,7 @@
+- tag: "[C1]"
+  authors: "some author"
+  title: "some paper"
+  place: "Conference on Vision and Pattern Recognition"
+  place_abbr: "CVPR"
+  location: "New Orleans, LA, USA"
+  time: "April 2026"

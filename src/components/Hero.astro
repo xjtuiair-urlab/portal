@@ -2,20 +2,13 @@
 // src/components/Hero.astro
 import { getEntry } from 'astro:content';
 
-// 1. 获取 Base URL (用于修复图片路径)
 const rawBase = import.meta.env.BASE_URL;
 const baseUrl = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
-
-const fixPath = (path: string | undefined) => {
-    if (!path) return "";
-    if (path.startsWith('http')) return path;
-    
-    // 移除 path 开头的斜杠
+const getLink = (path: string) => {
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    
-    // 强制中间加斜杠
+    if (cleanPath === '') return `${baseUrl}/`;
     return `${baseUrl}/${cleanPath}`;
-};
+}
 
 // 3. 读取数据
 const newsEntry = await getEntry('homepage', 'news');
@@ -41,8 +34,8 @@ const newsList = newsEntry ? newsEntry.data : [];
         <div class="hero-news-overlay" id="hero-news">
             {newsList.map((item) => (
                 <div class="news-card">
-                    <!-- ✅ 使用 fixPath 修复图片路径 -->
-                    <img src={fixPath(item.image)} alt="News Image">
+                    <!-- ✅ 使用 getLink 修复图片路径 -->
+                    <img src={getLink(item.image)} alt="News Image">
                     <div class="news-content">
                         <span class="news-date">{item.date}</span>
                         <h4 class="news-title">{item.title}</h4>
