@@ -28,6 +28,11 @@ const newsList = newsEntry ? newsEntry.data : [];
             <p class="type-subtitle">
                 <span id="text-subtitle"></span><span class="cursor hidden" id="cursor-sub">&nbsp;</span>
             </p>
+            <div class="subtitle-paragraphs">
+                <p class="type-subtitle-paragraph" id="subtitle-para-1"></p>
+                <p class="type-subtitle-paragraph" id="subtitle-para-2"></p>
+                <p class="type-subtitle-paragraph" id="subtitle-para-3"></p>
+            </div>
         </div>
 
         <!-- News Overlay -->
@@ -88,6 +93,23 @@ const newsList = newsEntry ? newsEntry.data : [];
         max-width: 900px; 
     }
 
+    /* 段落容器 */
+    .subtitle-paragraphs {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* 段落样式 */
+    .type-subtitle-paragraph {
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: #e0e0e0;
+        line-height: 1.6;
+        margin: 0;
+    }
+
     /* 大标题微调 */
     .type-title {
         font-size: 5rem;
@@ -124,6 +146,8 @@ const newsList = newsEntry ? newsEntry.data : [];
     @media (max-width: 768px) {
         .type-title { font-size: 3rem; }
         .hero-inner { padding-top: 150px; } /* 手机上文字靠上一点 */
+        .type-subtitle-paragraph { font-size: 1rem; }
+        .subtitle-paragraphs { gap: 15px; margin-top: 20px; }
         .hero-news-overlay {
             position: relative; /* 手机上取消绝对定位，防止内容太多显示不全 */
             bottom: auto;
@@ -138,9 +162,18 @@ const newsList = newsEntry ? newsEntry.data : [];
     document.addEventListener('DOMContentLoaded', () => {
         const titleText = "CAG @ IAIR";
         const subText = "Cognitive Architecture Group, Institute of AI & Robotics, Xi'an Jiaotong University";
+
+        const subtitleText1 = "Established in 2025, our laboratory is part of the research group led by Prof. Pengju Ren at Xi’an Jiaotong University. The lab focuses on frontier research in embodied intelligence, brain-inspired multimodal foundation models, and the application of emerging computing architectures to large-scale AI systems. By integrating advances in learning algorithms, robotic systems, and hardware design, we aim to develop intelligent systems that are both cognitively grounded and computationally efficient.";
+
+        const subtitleText2 = "The laboratory maintains close and active collaborations with interdisciplinary partnerships, which enable joint exploration across artificial intelligence, neuroscience, robotics, and computing systems, fostering a research environment that bridges theory, experimentation, and real-world deployment.";
+
+        const subtitleText3 = "Our team is equipped with top-tier computing resources, ensuring sufficient per-capita computational capacity to support large-scale model training and experimentation. In addition, the laboratory hosts a mature robotic testing platform and is supported by stable and adequate research funding, enabling sustained investment in both computational and physical research infrastructures.";
         
         const titleElement = document.getElementById('text-title');
         const subElement = document.getElementById('text-subtitle');
+        const para1Element = document.getElementById('subtitle-para-1');
+        const para2Element = document.getElementById('subtitle-para-2');
+        const para3Element = document.getElementById('subtitle-para-3');
         const lineElement = document.querySelector('.hero-line') as HTMLElement;
         const cursorTitle = document.getElementById('cursor-title');
         const cursorSub = document.getElementById('cursor-sub');
@@ -150,6 +183,9 @@ const newsList = newsEntry ? newsEntry.data : [];
 
         let titleIndex = 0;
         let subIndex = 0;
+        let para1Index = 0;
+        let para2Index = 0;
+        let para3Index = 0;
 
         function typeTitle() {
             if (titleIndex < titleText.length) {
@@ -177,6 +213,36 @@ const newsList = newsEntry ? newsEntry.data : [];
                 setTimeout(typeSubtitle, 30);
             } else {
                 setTimeout(() => { if(cursorSub) cursorSub.classList.add('hidden'); }, 1000);
+                setTimeout(() => { typeParagraph1(); }, 1500);
+            }
+        }
+
+        function typeParagraph1() {
+            if (para1Index < subtitleText1.length) {
+                if(para1Element) para1Element.textContent += subtitleText1.charAt(para1Index);
+                para1Index++;
+                setTimeout(typeParagraph1, 20);
+            } else {
+                setTimeout(() => { typeParagraph2(); }, 500);
+            }
+        }
+
+        function typeParagraph2() {
+            if (para2Index < subtitleText2.length) {
+                if(para2Element) para2Element.textContent += subtitleText2.charAt(para2Index);
+                para2Index++;
+                setTimeout(typeParagraph2, 20);
+            } else {
+                setTimeout(() => { typeParagraph3(); }, 500);
+            }
+        }
+
+        function typeParagraph3() {
+            if (para3Index < subtitleText3.length) {
+                if(para3Element) para3Element.textContent += subtitleText3.charAt(para3Index);
+                para3Index++;
+                setTimeout(typeParagraph3, 20);
+            } else {
                 setTimeout(() => { if(newsPanel) newsPanel.classList.add('fade-in-up'); }, 500);
             }
         }
