@@ -2,7 +2,7 @@
   description: "A high-performance workstation equipped with powerful GPUs for compute-hard workloads."
   equipments:
     - "2 x AMD EPYC 9655 96-Core Processor @ 2.6GHz"
-    - "2 × NVIDIA H200 141G with NVLink"
+    - "8 × NVIDIA H200 141G with NVLink"
     - "256G DDR5 RAM @ 5600MHz"
 
 - name: "General Workstation 2"
@@ -16,5 +16,5 @@
   description: "A high-performance workstation equipped with high-performance GPUs for compute-hard workloads."
   equipments:
     - "Intel Xeon Platinum 8383C @ 2.70GHz"
-    - "2 × NVIDIA A100 80G with NVLink"
+    - "8 × NVIDIA A100 80G with NVLink"
     - "256G DDR5 RAM @ 5200MHz"

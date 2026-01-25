@@ -24,16 +24,15 @@ const getLink = (path: string) => {
         to the real world through embodied experiences.
     </p>
 
-    <h3 class="content-title">Vision-Language-Action Models</h3>
+    <h3 class="content-title">Vision Language Action Models</h3>
 
     <p>
         The integration of vision, language, and action represents a frontier in creating generalist 
         robotic agents. Vision-Language-Action (VLA) models are challenged by the need to ground 
         linguistic instructions and visual perception into precise, sequential physical actions. 
-        Spanning the domains of multimodal learning, robot control, and real-world deployment, our 
-        key work involves developing unified models that translate high-level commands into adaptive and safe robotic behaviors.
+        Spanning the domains of multimodal learning, robot control, and real-world deployment.
     </p>
-    
+
     <video controls style="width: 33%; margin: 20px 0; border-radius: 8px;">
         <source src={getLink("assets/research/embodied1.mp4")} type="video/mp4">
     </video>
@@ -46,38 +45,67 @@ const getLink = (path: string) => {
         <source src={getLink("assets/research/embodied3.mp4")} type="video/mp4">
     </video>
 
-    <ul>
-        <li>Paper A</li>
-        <li>Paper B</li>
-    </ul>
+    <h3 class="content-title">Vision Language Models</h3>
+
+    <p>
+        Vision-Language Models (VLMs) aim to bridge visual perception and natural language understanding, 
+        enabling machines to interpret, reason about, and communicate complex visual information. 
+        By jointly modeling images and text, VLMs move beyond isolated visual recognition or 
+        language processing, addressing the fundamental challenge of multimodal grounding and alignment. 
+        This paradigm supports a wide range of capabilities, from visual question answering and image 
+        captioning to multimodal reasoning and instruction following. Our research 
+        advances VLMs through scalable pretraining, robust cross-modal grounding, and efficient adaptation 
+        to downstream embodied applications, bridging the gap between passive understanding and active engagement 
+        with the world.
+    </p>
     
     <hr/>
 
-    <h2 class="content-title">Emerging Computing Architecture</h2>
+    <h2 class="content-title">Emerging Computing Architectures</h2>
 
     <p>
-        As the traditional von Neumann architecture faces severe bottlenecks due to the "memory wall" 
-        and "power wall," emerging compute architectures, such as Processing-in-Memory (PIM) and 
-        Computing-in-Memory (CIM), have become a pivotal paradigm shift in modern integrated circuits.
+        As modern artificial intelligence systems continue to scale in model size, complexity, 
+        and deployment scenarios, traditional computing architectures are increasingly constrained 
+        by efficiency, latency, and energy consumption. Emerging computing architectures aim to 
+        fundamentally balance the interaction between algorithms, hardware, and systems, enabling 
+        efficient and scalable execution of deep learning and large language models across cloud, 
+        edge, and resource-constrained platforms. Our research explores architecture–algorithm 
+        co-design paradigms that bridge theoretical model advances with practical hardware realizations.
     </p>
 
-    <h3 class="content-title">Computing-in-Memory (CIM) Architecture</h3>
+    <h3 class="content-title">Deep Learning and LLM Accelerators</h3>
 
     <p>
-        To break the "memory wall" that plagues data movement between separate processing and memory units, 
-        Compute-In-Memory (CIM) architecture emerges as a paradigm-shifting solution. It is challenged by 
-        the design of reliable, high-density, and non-volatile memory devices capable of performing analog 
-        computations in-place. Covering material science, circuit design, and architecture innovation, our 
-        major thrust is on realizing CIM systems that drastically accelerate core operations like matrix-vector 
-        multiplication for next-generation AI hardware.
+        While deep learning and large language models have demonstrated remarkable success across 
+        a wide range of real-world applications, their rapidly growing computational and memory 
+        demands pose significant challenges to conventional hardware platforms. Most existing 
+        models are designed with limited awareness of hardware constraints, leading to inefficiencies 
+        in performance, energy consumption, and scalability. To address these challenges, we focus on 
+        the co-design of hardware-friendly model architectures and specialized accelerators, alongside 
+        system-level optimization techniques for efficient deployment. Our research spans accelerator 
+        microarchitecture, dataflow optimization, and software–hardware interfaces, aiming to enable 
+        high-performance and energy-efficient execution of deep learning and LLM workloads, 
+        particularly for edge and embedded environments.
     </p>
 
-    <img src={getLink("assets/research/cim.png")} style="width: 100%; margin: 20px 0; border-radius: 8px;">
+    <h3 class="content-title">In-Memory and Near-Memory Computing</h3>
+
+    <p>
+        The increasing dominance of data movement costs has exposed fundamental limitations of the 
+        traditional von Neumann architecture, especially for data-intensive AI workloads. In-memory 
+        and near-memory computing paradigms seek to alleviate this bottleneck by tightly integrating 
+        computation with memory, reducing data transfer overhead and improving energy efficiency. 
+        Our research investigates compute-in-memory architectures, mixed-signal and digital designs, 
+        and algorithm–hardware co-optimization strategies, with a particular emphasis on neural 
+        network inference and learning. By exploring novel memory devices, architectural abstractions, 
+        and system-level integration, we aim to unlock new pathways toward scalable and efficient 
+        AI computing beyond conventional architectures.
+    </p>
+
+    <img src={getLink("assets/research/cim.png")} style="width: 33%; margin: 20px 0; border-radius: 8px;">
+    <img src={getLink("assets/research/Layer.png")} style="width: 33%; margin: 20px 0; border-radius: 8px;">
+    <img src={getLink("assets/research/CIM_device.png")} style="width: 33%; margin: 20px 0; border-radius: 8px;">
     
-    <ul>
-        <li>Paper A</li>
-        <li>Paper B</li>
-    </ul>
 
     <hr/>
 
@@ -90,22 +118,6 @@ const getLink = (path: string) => {
         footprint. Spanning techniques from algorithm design to hardware-aware optimization, our central mission is 
         to develop methodologies that make advanced AI capabilities accessible, sustainable, and scalable.
     </p>
-
-    <h3 class="content-title">Model and Dataset Distillation</h3>
-
-    <p>
-        In response to the prohibitive cost of training and deploying massive models on enormous datasets, distillation 
-        techniques aim to capture essential knowledge into compact forms. Model and Dataset Distillation is challenged 
-        by efficiently transferring the capabilities of a large "teacher" network into a small "student" or synthesizing 
-        a small, informative dataset that preserves the utility of a large original one. Covering knowledge transfer, 
-        core-set selection, and synthetic data generation, our key achievement lies in creating highly portable and 
-        efficient representations that maintain high task performance.
-    </p>
-    
-    <ul>
-        <li>Paper A</li>
-        <li>Paper B</li>
-    </ul>
 
 
 
