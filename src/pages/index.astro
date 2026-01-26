@@ -127,6 +127,16 @@ const pubs = pubsEntry ? pubsEntry.data : [];
 <style>
     .research-grid { display: flex; align-items: center; gap: 60px; }
     .research-text { flex: 1; }
+    .research-text p {
+        text-align: justify;
+        line-height: 1.8;
+        margin-bottom: 24px;
+        color: var(--text-light);
+        font-size: 1.05rem;
+    }
+    .research-text p:last-of-type {
+        margin-bottom: 30px;
+    }
     .research-img { flex: 1; text-align: center; }
     .brain-img { width: 100%; max-width: 500px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
 
