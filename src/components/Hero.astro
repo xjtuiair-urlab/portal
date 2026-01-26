@@ -10,9 +10,9 @@ const getLink = (path: string) => {
     return `${baseUrl}/${cleanPath}`;
 }
 
-// 3. 读取数据
-const newsEntry = await getEntry('news', 'news');
-const newsList = newsEntry ? newsEntry.data : [];
+// 3. 读取 Hero 特色卡片数据
+const heroCardsEntry = await getEntry('homepage', 'herocard');
+const cardList = heroCardsEntry ? heroCardsEntry.data : [];
 ---
 
 <section class="hero-typing">
@@ -30,12 +30,11 @@ const newsList = newsEntry ? newsEntry.data : [];
             </p>
         </div>
 
-        <!-- News Overlay -->
+        <!-- Feature Cards Overlay (Separated from News) -->
         <div class="hero-news-overlay" id="hero-news">
-            {newsList.map((item) => (
+            {Array.isArray(cardList) && cardList.map((item) => (
                 <div class="news-card">
-                    <!-- ✅ 使用 getLink 修复图片路径 -->
-                    <img src={getLink(item.image)} alt="News Image">
+                    <img src={getLink(item.image)} alt={item.title}>
                     <div class="news-content">
                         <span class="news-date">{item.date}</span>
                         <h4 class="news-title">{item.title}</h4>

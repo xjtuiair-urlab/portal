@@ -1,0 +1,14 @@
+- title: "Embodied AI"
+  date: "Core Research"
+  image: "assets/background/embodiedai.png"
+  link: "/research#embodied"
+
+- title: "Efficient AI"
+  date: "Optimization"
+  image: "assets/background/mllm.png"
+  link: "/research#efficientai"
+
+- title: "New Architectures"
+  date: "Hardware Co-design"
+  image: "assets/research/cim.png"
+  link: "/research#newarch"

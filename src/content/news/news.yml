@@ -1,15 +1,5 @@
-- title: "Embodied AI"
+- title: "Placeholder"
   date: "Jan 15, 2026"
   image: "assets/background/embodiedai.png"
-  link: "research"
-
-- title: "Multimodal Large Language Models"
-  date: "Jan 14, 2026"
-  image: "assets/background/mllm.png"
-  link: "research"
-
-- title: "Emerging Computing Architectures"
-  date: "Jan 13, 2026"
-  image: "assets/background/cim.png"
-  link: "research"
+  link: "#"
 
