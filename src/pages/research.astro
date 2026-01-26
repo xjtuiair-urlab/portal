@@ -102,9 +102,11 @@ const getLink = (path: string) => {
         AI computing beyond conventional architectures.
     </p>
 
-    <img src={getLink("assets/research/cim.png")} style="width: 33%; margin: 20px 0; border-radius: 8px;">
-    <img src={getLink("assets/research/Layer.png")} style="width: 33%; margin: 20px 0; border-radius: 8px;">
-    <img src={getLink("assets/research/CIM_device.png")} style="width: 33%; margin: 20px 0; border-radius: 8px;">
+    <div class="research-images">
+        <img src={getLink("assets/research/cim.png")} alt="CIM">
+        <img src={getLink("assets/research/Layer.png")} alt="Layer">
+        <img src={getLink("assets/background/cim.png")} alt="CIM Device">
+    </div>
     
 
     <hr/>
@@ -119,6 +121,30 @@ const getLink = (path: string) => {
         to develop methodologies that make advanced AI capabilities accessible, sustainable, and scalable.
     </p>
 
-
-
 </SidebarLayout>
+
+<style>
+    .research-images {
+        display: flex;
+        gap: 20px;
+        margin: 30px 0;
+        flex-wrap: wrap;
+    }
+    
+    .research-images img {
+        flex: 1;
+        min-width: 200px;
+        max-width: calc(33.333% - 14px);
+        border-radius: 8px;
+        object-fit: cover;
+    }
+    
+    @media (max-width: 768px) {
+        .research-images {
+            flex-direction: column;
+        }
+        .research-images img {
+            max-width: 100%;
+        }
+    }
+</style>
