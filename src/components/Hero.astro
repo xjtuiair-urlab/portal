@@ -89,8 +89,8 @@ const newsList = newsEntry ? newsEntry.data : [];
     .typing-content {
         z-index: 5;
         position: relative;
-        /* 防止文字太宽 */
-        max-width: 900px; 
+        width: 100%;
+        text-align: left;
     }
 
     /* 段落容器 */
@@ -99,6 +99,7 @@ const newsList = newsEntry ? newsEntry.data : [];
         display: flex;
         flex-direction: column;
         gap: 20px;
+        width: 100%;
     }
 
     /* 段落样式 */
@@ -108,6 +109,17 @@ const newsList = newsEntry ? newsEntry.data : [];
         color: #e0e0e0;
         line-height: 1.6;
         margin: 0;
+        width: 100%;
+        text-align: left;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    /* 消融动画 */
+    .type-subtitle-paragraph.fade-in {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     /* 大标题微调 */
@@ -183,9 +195,6 @@ const newsList = newsEntry ? newsEntry.data : [];
 
         let titleIndex = 0;
         let subIndex = 0;
-        let para1Index = 0;
-        let para2Index = 0;
-        let para3Index = 0;
 
         function typeTitle() {
             if (titleIndex < titleText.length) {
@@ -213,38 +222,43 @@ const newsList = newsEntry ? newsEntry.data : [];
                 setTimeout(typeSubtitle, 30);
             } else {
                 setTimeout(() => { if(cursorSub) cursorSub.classList.add('hidden'); }, 1000);
-                setTimeout(() => { typeParagraph1(); }, 1500);
+                setTimeout(() => { showParagraphs(); }, 1500);
             }
         }
 
-        function typeParagraph1() {
-            if (para1Index < subtitleText1.length) {
-                if(para1Element) para1Element.textContent += subtitleText1.charAt(para1Index);
-                para1Index++;
-                setTimeout(typeParagraph1, 20);
-            } else {
-                setTimeout(() => { typeParagraph2(); }, 500);
+        function showParagraphs() {
+            // 直接设置文字内容
+            if(para1Element) {
+                para1Element.textContent = subtitleText1;
+                // 触发消融动画
+                setTimeout(() => {
+                    para1Element.classList.add('fade-in');
+                }, 50);
             }
-        }
-
-        function typeParagraph2() {
-            if (para2Index < subtitleText2.length) {
-                if(para2Element) para2Element.textContent += subtitleText2.charAt(para2Index);
-                para2Index++;
-                setTimeout(typeParagraph2, 20);
-            } else {
-                setTimeout(() => { typeParagraph3(); }, 500);
-            }
-        }
-
-        function typeParagraph3() {
-            if (para3Index < subtitleText3.length) {
-                if(para3Element) para3Element.textContent += subtitleText3.charAt(para3Index);
-                para3Index++;
-                setTimeout(typeParagraph3, 20);
-            } else {
-                setTimeout(() => { if(newsPanel) newsPanel.classList.add('fade-in-up'); }, 500);
-            }
+            
+            // 第二段
+            setTimeout(() => {
+                if(para2Element) {
+                    para2Element.textContent = subtitleText2;
+                    setTimeout(() => {
+                        para2Element.classList.add('fade-in');
+                    }, 50);
+                }
+            }, 400);
+            
+            // 第三段
+            setTimeout(() => {
+                if(para3Element) {
+                    para3Element.textContent = subtitleText3;
+                    setTimeout(() => {
+                        para3Element.classList.add('fade-in');
+                        // 所有段落显示完成后，显示新闻面板
+                        setTimeout(() => { 
+                            if(newsPanel) newsPanel.classList.add('fade-in-up'); 
+                        }, 500);
+                    }, 50);
+                }
+            }, 800);
         }
 
         setTimeout(typeTitle, 500);
