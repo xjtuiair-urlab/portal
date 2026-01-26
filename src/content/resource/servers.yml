@@ -12,9 +12,9 @@
     - "4 × NVIDIA A100 80G with NVLink"
     - "512G DDR5 RAM @ 5200MHz"
 
-- name: "LLM Workstation-Training"
-  # description: "A high-performance workstation equipped with powerful GPUs for compute-hard workloads."
-  equipments:
-    - "2 x AMD EPYC 9655 96-Core Processor @ 2.6GHz"
-    - "8 × NVIDIA H200 141G with NVLink"
-    - "512G DDR5 RAM @ 5600MHz"
+# - name: "LLM Workstation-Training"
+#   # description: "A high-performance workstation equipped with powerful GPUs for compute-hard workloads."
+#   equipments:
+#     - "2 x AMD EPYC 9655 96-Core Processor @ 2.6GHz"
+#     - "8 × NVIDIA H200 141G with NVLink"
+#     - "512G DDR5 RAM @ 5600MHz"
