@@ -39,7 +39,7 @@ const newsList = newsEntry ? newsEntry.data : [];
                     <div class="news-content">
                         <span class="news-date">{item.date}</span>
                         <h4 class="news-title">{item.title}</h4>
-                        <a href={item.link || "#"} class="read-more">Learn More ➝</a>
+                        <a href={getLink(item.link) || "#"} class="read-more">Learn More ➝</a>
                     </div>
                 </div>
             ))}
