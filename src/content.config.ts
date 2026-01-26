@@ -39,7 +39,7 @@ const resourceCollection = defineCollection({
   type: 'data',
   schema: z.array(z.object({
     name: z.string(),
-    description: z.string(),
+    //description: z.string(),
     equipments: z.array(z.string()),
   }))
 })
