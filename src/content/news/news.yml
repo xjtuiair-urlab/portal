@@ -1,14 +1,15 @@
-- title: "A Latest Contribution from Prof. Sawan's Research Center."
-  date: "Jan 9, 2026"
+- title: "Embodied AI"
+  date: "Jan 15, 2026"
+  image: "assets/background/embodiedai.png"
+  link: "#"
+
+- title: "Multimodal Large Language Models"
+  date: "Jan 14, 2026"
   image: "assets/background/news.png"
   link: "#"
 
-- title: "Congratulations to Yi Su on joining our center!"
-  date: "Jan 5, 2026"
+- title: "Emerging Computing Architectures"
+  date: "Jan 13, 2026"
   image: "assets/background/news.png"
   link: "#"
 
-- title: "Congratulations to Dr. Meriem for mid-term evaluation."
-  date: "Jan 4, 2026"
-  image: "assets/background/news.png"
-  link: "#"

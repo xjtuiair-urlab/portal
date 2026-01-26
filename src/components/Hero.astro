@@ -28,11 +28,6 @@ const newsList = newsEntry ? newsEntry.data : [];
             <p class="type-subtitle">
                 <span id="text-subtitle"></span><span class="cursor hidden" id="cursor-sub">&nbsp;</span>
             </p>
-            <div class="subtitle-paragraphs">
-                <p class="type-subtitle-paragraph" id="subtitle-para-1"></p>
-                <p class="type-subtitle-paragraph" id="subtitle-para-2"></p>
-                <p class="type-subtitle-paragraph" id="subtitle-para-3"></p>
-            </div>
         </div>
 
         <!-- News Overlay -->
@@ -174,18 +169,9 @@ const newsList = newsEntry ? newsEntry.data : [];
     document.addEventListener('DOMContentLoaded', () => {
         const titleText = "CAG @ IAIR";
         const subText = "Cognitive Architecture Group, Institute of AI & Robotics, Xi'an Jiaotong University";
-
-        const subtitleText1 = "Established in 2025, our laboratory is part of the research group led by Prof. Pengju Ren at Xi’an Jiaotong University. The lab focuses on frontier research in embodied intelligence, brain-inspired multimodal foundation models, and the application of emerging computing architectures to large-scale AI systems. By integrating advances in learning algorithms, robotic systems, and hardware design, we aim to develop intelligent systems that are both cognitively grounded and computationally efficient.";
-
-        const subtitleText2 = "The laboratory maintains close and active collaborations with interdisciplinary partnerships, which enable joint exploration across artificial intelligence, neuroscience, robotics, and computing systems, fostering a research environment that bridges theory, experimentation, and real-world deployment.";
-
-        const subtitleText3 = "Our team is equipped with top-tier computing resources, ensuring sufficient per-capita computational capacity to support large-scale model training and experimentation. In addition, the laboratory hosts a mature robotic testing platform and is supported by stable and adequate research funding, enabling sustained investment in both computational and physical research infrastructures.";
         
         const titleElement = document.getElementById('text-title');
         const subElement = document.getElementById('text-subtitle');
-        const para1Element = document.getElementById('subtitle-para-1');
-        const para2Element = document.getElementById('subtitle-para-2');
-        const para3Element = document.getElementById('subtitle-para-3');
         const lineElement = document.querySelector('.hero-line') as HTMLElement;
         const cursorTitle = document.getElementById('cursor-title');
         const cursorSub = document.getElementById('cursor-sub');
@@ -222,43 +208,10 @@ const newsList = newsEntry ? newsEntry.data : [];
                 setTimeout(typeSubtitle, 30);
             } else {
                 setTimeout(() => { if(cursorSub) cursorSub.classList.add('hidden'); }, 1000);
-                setTimeout(() => { showParagraphs(); }, 1500);
+                setTimeout(() => { 
+                    if(newsPanel) newsPanel.classList.add('fade-in-up'); 
+                }, 1500);
             }
-        }
-
-        function showParagraphs() {
-            // 直接设置文字内容
-            if(para1Element) {
-                para1Element.textContent = subtitleText1;
-                // 触发消融动画
-                setTimeout(() => {
-                    para1Element.classList.add('fade-in');
-                }, 50);
-            }
-            
-            // 第二段
-            setTimeout(() => {
-                if(para2Element) {
-                    para2Element.textContent = subtitleText2;
-                    setTimeout(() => {
-                        para2Element.classList.add('fade-in');
-                    }, 50);
-                }
-            }, 400);
-            
-            // 第三段
-            setTimeout(() => {
-                if(para3Element) {
-                    para3Element.textContent = subtitleText3;
-                    setTimeout(() => {
-                        para3Element.classList.add('fade-in');
-                        // 所有段落显示完成后，显示新闻面板
-                        setTimeout(() => { 
-                            if(newsPanel) newsPanel.classList.add('fade-in-up'); 
-                        }, 500);
-                    }, 50);
-                }
-            }, 800);
         }
 
         setTimeout(typeTitle, 500);
