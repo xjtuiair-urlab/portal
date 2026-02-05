@@ -35,6 +35,19 @@ const servers = serversEntry ? serversEntry.data : [];
         ))}
     </div>
 
+    <h2 class="content-title">Robotic Platforms</h2>
+
+    <div class="resource-image-grid">
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+            <img
+                src={`${baseUrl}/assets/resources/${i}.jpg`}
+                alt={`Resource ${i}`}
+                loading="lazy"
+            />
+        ))}
+    </div>
+
+
 </SidebarLayout>
 
 <style>
@@ -44,6 +57,21 @@ const servers = serversEntry ? serversEntry.data : [];
         margin-bottom: 30px;
         border-bottom: 2px solid var(--primary-blue);
         padding-bottom: 10px;
+    }
+
+    .resource-image-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .resource-image-grid img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 8px;
     }
 
     .server-grid {
