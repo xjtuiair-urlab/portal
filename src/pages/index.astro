@@ -109,15 +109,10 @@ const pubs = pubsEntry ? pubsEntry.data : [];
 
     <section class="talents-section">
         <div class="container">
-            <div class="talents-grid">
-                <div class="talents-content">
-                    <h2 class="section-title">Calling For Talents</h2>
-                    <p class="talents-text">Contact us, if any interests in open positions!</p>
-                    <a href={getLink("join")} class="btn">Send Message</a>
-                </div>
-                <div class="talents-visual">
-                    <img src={getLink("assets/background/chip.png")} alt="Talent Network">
-                </div>
+            <div class="talents-content">
+                <h2 class="section-title">Calling For Talents</h2>
+                <p class="talents-text">Contact us, if any interests in open positions!</p>
+                <a href={getLink("join")} class="btn">Send Message</a>
             </div>
         </div>
     </section>
@@ -189,11 +184,20 @@ const pubs = pubsEntry ? pubsEntry.data : [];
     .stat-item p { font-size: 12px; letter-spacing: 1px; opacity: 0.8; }
     .btn-stats { margin: 0; }
 
-    .talents-section { background: #f9f9f9; }
-    .talents-grid { display: flex; align-items: center; justify-content: space-between; }
-    .talents-content { max-width: 400px; }
-    .talents-visual img { max-width: 500px; }
+    .talents-section { background: #f9f9f9; padding: 56px 0; }
+    .talents-content {
+        text-align: center;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+    .talents-content .section-title { margin-bottom: 16px; }
+    .talents-text {
+        font-size: 1.05rem;
+        color: var(--text-light);
+        margin-bottom: 24px;
+        line-height: 1.6;
+    }
 
     @media (max-width: 1024px) { .pub-grid-home { grid-template-columns: repeat(2, 1fr); } .stats-bar { flex-wrap: wrap; gap: 30px; justify-content: center; text-align: center; } }
-    @media (max-width: 768px) { .research-grid, .talents-grid { flex-direction: column; text-align: center; } .pub-grid-home { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .research-grid { flex-direction: column; text-align: center; } .pub-grid-home { grid-template-columns: 1fr; } }
 </style>
