@@ -15,7 +15,43 @@ const getLink = (path: string) => {
     <h2 class="content-title">Conference & Journal Papers</h2>
 
     <h3 class="content-title">2026</h3>
+    <ul class="pub-list">
+        <li class="pub-item">
+            <span class="pub-authors">Jin Cui, Jiaqi Guo, Jiepeng Zhou, et al.</span>
+            <a class="pub-title" href="https://arxiv.org/abs/2601.13992" target="_blank" rel="noopener">"The Whole Is Greater Than the Sum of Its Parts": A Compatibility-Aware Multi-Teacher CoT Distillation Framework</a>.
+            <span class="pub-venue">arXiv:2601.13992 [cs.CL]</span>, 2026.
+        </li>
+        <li class="pub-item">
+            <span class="pub-authors">Jin Cui, Jiaqi Guo, Jiepeng Zhou, et al.</span>
+            <a class="pub-title" href="https://arxiv.org/abs/2601.03717" target="_blank" rel="noopener">MIND: From Passive Mimicry to Active Reasoning through Capability-Aware Multi-Perspective CoT Distillation</a>.
+            <span class="pub-venue">arXiv:2601.03717 [cs.CL]</span>, 2026.
+        </li>
+    </ul>
+
     <h3 class="content-title">2025</h3>
+    <ul class="pub-list">
+        <li class="pub-item">
+            <span class="pub-authors">Boran Zhao, Jin Cui, Jiajun Xu, et al.</span>
+            <a class="pub-title" href="https://arxiv.org/abs/2511.19476" target="_blank" rel="noopener">FAST: Topology-Aware Frequency-Domain Distribution Matching for Coreset Selection</a>.
+            <span class="pub-venue">arXiv:2511.19476 [stat.ML]</span>, 2025.
+        </li>
+        <li class="pub-item">
+            <span class="pub-authors">Boran Zhao et al.</span>
+            <a class="pub-title" href="https://doi.org/10.1109/TCAD.2025.3621407" target="_blank" rel="noopener">SparseMap: A Sparse Tensor Accelerator Framework Based on Evolution Strategy</a>.
+            <span class="pub-venue">IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</span>, 2025.
+        </li>
+        <li class="pub-item">
+            <span class="pub-authors">Boran Zhao, Zihang Yuan, Yanbin Hu, et al.</span>
+            <a class="pub-title" href="https://arxiv.org/abs/2509.12208" target="_blank" rel="noopener">IsoSched: Preemptive Tile Cascaded Scheduling of Multi-DNN via Subgraph Isomorphism</a>.
+            <span class="pub-venue">arXiv:2509.12208 [cs.DC]</span>, 2025.
+        </li>
+        <li class="pub-item">
+            <span class="pub-authors">Boran Zhao, Hetian Liu, Zihang Yuan, et al.</span>
+            <a class="pub-title" href="https://arxiv.org/abs/2508.16647" target="_blank" rel="noopener">AdapSNE: Adaptive Fireworks-Optimized and Entropy-Guided Dataset Sampling for Edge DNN Training</a>.
+            <span class="pub-venue">arXiv:2508.16647 [cs.LG]</span>, 2025.
+        </li>
+    </ul>
+    
     <h3 class="content-title">2024</h3>
 
     <hr/>
@@ -27,3 +63,37 @@ const getLink = (path: string) => {
     <h2 class="content-title">Newsletters</h2>
 
 </SidebarLayout>
+
+<style>
+    .pub-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+    }
+
+    .pub-item {
+        margin-bottom: 1.25rem;
+        padding-left: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    .pub-authors {
+        color: var(--text-dark, #333);
+    }
+
+    .pub-title {
+        color: var(--primary-blue, #1a365d);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .pub-title:hover {
+        text-decoration: underline;
+    }
+
+    .pub-venue {
+        color: var(--text-light, #666);
+        font-style: italic;
+    }
+</style>

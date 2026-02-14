@@ -17,3 +17,11 @@
 - name: "Jiajun Xu"
   since: "Fall 2025"
   image: "assets/people/jiajun_xu.jpg"
+
+- name: "Xunyong Zhang"
+  since: "Spring 2026"
+  image: "assets/people/xunyong_zhang.jpg"
+
+- name: "Chuanchang Su"
+  since: "Spring 2026"
+  image: "assets/people/chuanchang_su.jpg"
