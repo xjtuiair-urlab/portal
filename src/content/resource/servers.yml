@@ -17,4 +17,4 @@
   equipments:
     - "2 x AMD EPYC 9655 96-Core Processor @ 2.6GHz"
     - "8 × NVIDIA H200 141G with NVLink"
-    - "512G DDR5 RAM @ 5600MHz"
+    - "1T DDR5 RAM @ 5600MHz"
