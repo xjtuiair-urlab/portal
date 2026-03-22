@@ -29,3 +29,7 @@
 - name: "Zhaoyu Pu"
   since: "Spring 2026"
   image: "assets/people/zhaoyu_pu.jpg"
+
+- name: "Kuanli Yi"
+  since: "Spring 2026"
+  image: "assets/people/kuanli_yi.jpg"
