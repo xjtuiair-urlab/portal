@@ -13,3 +13,11 @@
 - name: "Xinyue Long"
   since: "Fall 2025"
   image: "assets/people/xinyue_long.jpg"
+
+- name: "Linkai Li"
+  since: "Fall 2026"
+  image: "assets/people/linkai_li.jpg"
+
+- name: "Jun Ye"
+  since: "Fall 2026"
+  image: "assets/people/jun_ye.jpg"
