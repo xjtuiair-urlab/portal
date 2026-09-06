@@ -1,7 +1,7 @@
 - name: "Jin Cui"
   since: "Fall 2025"
   image: "assets/people/jin_cui.jpg"
-  
+
 - name: "Hetian Liu"
   since: "Fall 2024"
   image: "assets/people/hetian_liu.jpg"
@@ -10,13 +10,13 @@
   since: "Fall 2025"
   image: "assets/people/yanbin_hu.jpg"
 
-- name: "Kai Zhou"
-  since: "Fall 2025"
-  image: "assets/people/kai_zhou.jpg"
-
 - name: "Xinyue Long"
   since: "Fall 2025"
   image: "assets/people/xinyue_long.jpg"
+
+- name: "Kai Zhou"
+  since: "Fall 2025"
+  image: "assets/people/kai_zhou.jpg"
 
 - name: "Jun Ye"
   since: "Fall 2026"
