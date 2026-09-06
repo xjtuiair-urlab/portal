@@ -1,14 +1,11 @@
+- title: "Foundation Models"
+  image: "assets/research/FoundationModel.png"
+  link: "/research#foundation"
+
 - title: "Embodied AI"
-  date: "Dec. 2025"
   image: "assets/background/embodiedai.png"
   link: "/research#embodied"
 
-- title: "Multimodal Large Language Models"
-  date: "Dec. 2025"
-  image: "assets/background/mllm.png"
+- title: "Efficient AI"
+  image: "assets/background/kd.png"
   link: "/research#efficientai"
-
-- title: "Advanced Computing Architectures"
-  date: "Nov. 2025"
-  image: "assets/background/cim.png"
-  link: "/research#newarch"

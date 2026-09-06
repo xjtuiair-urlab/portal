@@ -36,7 +36,6 @@ const cardList = heroCardsEntry ? heroCardsEntry.data : [];
                 <div class="news-card">
                     <img src={getLink(item.image)} alt={item.title}>
                     <div class="news-content">
-                        <span class="news-date">{item.date}</span>
                         <h4 class="news-title">{item.title}</h4>
                         <a href={getLink(item.link) || "#"} class="read-more">Learn More ➝</a>
                     </div>

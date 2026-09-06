@@ -13,6 +13,45 @@ const getLink = (path: string) => {
 <SidebarLayout title="Overview of Our Research" bannerTitle="Research" category="research">
     
     <div class="research-list">
+        <!-- Foundation Models Card -->
+        <div class="research-card" id="foundation">
+            <div class="card-main">
+                <div class="card-image">
+                    <img src={getLink("assets/research/FoundationModel.png")} alt="Foundation Models" class="placeholder-img" />
+                </div>
+                <div class="card-info">
+                    <h2 class="card-title">Foundation Models</h2>
+                    <p class="summary">
+                        Foundation Models aim to provide broadly capable and transferable intelligence by learning 
+                        general representations across large-scale data, diverse modalities, and complex tasks. 
+                        Advances in this area are pushing AI toward stronger perception, reasoning, adaptability, 
+                        and efficiency.
+                    </p>
+                    <a href="#foundation" class="read-more">Read More ➝</a>
+                </div>
+            </div>
+            <div class="card-details">
+                <h3 class="content-subtitle">1. Perception and Reasoning</h3>
+                <p>
+                    Foundation models for robust perception, understanding, and reasoning in complex multimodal 
+                    environments. Key topics include compositional reasoning, multimodal understanding, and 
+                    generalization across diverse tasks and domains.
+                </p>
+                <h3 class="content-subtitle">2. Efficient and Reliable Reinforcement Learning</h3>
+                <p>
+                    Reinforcement learning methods that improve sample efficiency and reliability in complex, 
+                    long-horizon decision-making scenarios. Emphasis is placed on scalable learning algorithms, 
+                    robust policy optimization, and the integration of reinforcement learning with foundation models.
+                </p>
+                <h3 class="content-subtitle">3. Efficient Multimodal Large Models</h3>
+                <p>
+                    Efficient architectures and learning paradigms for large multimodal models spanning language, 
+                    vision, and other modalities. The focus is on reducing training and inference costs while 
+                    preserving strong perception, reasoning, and generalization capabilities.
+                </p>
+            </div>
+        </div>
+
         <!-- Embodied AI Card -->
         <div class="research-card" id="embodied">
             <div class="card-main">
@@ -30,36 +69,17 @@ const getLink = (path: string) => {
                 </div>
             </div>
             <div class="card-details">
+                <h3 class="content-subtitle">1. Long-Horizon Planning and Manipulation</h3>
                 <p>
-                    Moving beyond static datasets, it tackles the 
-                    core challenge of integrating sensory understanding with physical action to achieve 
-                    complex tasks. Covering areas from robotic navigation to interactive task completion, 
-                    our core exploration centers on building intelligent systems that learn from and adapt 
-                    to the real world through embodied experiences.
+                    Embodied agents capable of planning and executing complex, long-horizon tasks in dynamic 
+                    environments. Core topics include high-level reasoning, task planning, and low-level 
+                    manipulation for robust and generalizable robotic behavior.
                 </p>
-                <h3 class="content-subtitle">Vision Language Action Models</h3>
+                <h3 class="content-subtitle">2. World Perception</h3>
                 <p>
-                    The integration of vision, language, and action represents a frontier in creating generalist 
-                    robotic agents. Vision-Language-Action (VLA) models are challenged by the need to ground 
-                    linguistic instructions and visual perception into precise, sequential physical actions. 
-                    Spanning the domains of multimodal learning, robot control, and real-world deployment.
-                </p>
-                <div class="media-grid">
-                    <video controls><source src={getLink("assets/research/embodied1.mp4")} type="video/mp4"></video>
-                    <video controls><source src={getLink("assets/research/embodied2.mp4")} type="video/mp4"></video>
-                    <video controls><source src={getLink("assets/research/embodied3.mp4")} type="video/mp4"></video>
-                </div>
-                <h3 class="content-subtitle">Vision Language Models</h3>
-                <p>
-                    Vision-Language Models (VLMs) aim to bridge visual perception and natural language understanding, 
-                    enabling machines to interpret, reason about, and communicate complex visual information. 
-                    By jointly modeling images and text, VLMs move beyond isolated visual recognition or 
-                    language processing, addressing the fundamental challenge of multimodal grounding and alignment. 
-                    This paradigm supports a wide range of capabilities, from visual question answering and image 
-                    captioning to multimodal reasoning and instruction following. Our research 
-                    advances VLMs through scalable pretraining, robust cross-modal grounding, and efficient adaptation 
-                    to downstream embodied applications, bridging the gap between passive understanding and active engagement 
-                    with the world.
+                    Perception systems that enable embodied agents to construct rich and actionable representations 
+                    of the physical world. Research topics include spatial understanding, scene and object reasoning, 
+                    and multimodal perception for interaction in open-world environments.
                 </p>
             </div>
         </div>
@@ -136,13 +156,23 @@ const getLink = (path: string) => {
                 </div>
             </div>
             <div class="card-details">
+                <h3 class="content-subtitle">1. Dataset Distillation</h3>
                 <p>
-                    As state-of-the-art AI models grow exponentially in size and resource requirements, 
-                    their deployment in real-world, resource-constrained settings becomes profoundly difficult. 
-                    Efficient AI addresses the critical 
-                    challenge of maximizing model performance while minimizing computational cost, energy consumption, and memory 
-                    footprint. Spanning techniques from algorithm design to hardware-aware optimization, our central mission is 
-                    to develop methodologies that make advanced AI capabilities accessible, sustainable, and scalable.
+                    Dataset distillation methods that compress large-scale training data into compact and highly 
+                    informative synthetic datasets. The objective is to reduce data, storage, and training costs 
+                    while retaining strong downstream performance and transferability.
+                </p>
+                <h3 class="content-subtitle">2. Knowledge Distillation</h3>
+                <p>
+                    Knowledge distillation techniques for transferring capabilities from large models to smaller 
+                    and more efficient ones. Key directions include effective knowledge representation and transfer 
+                    across architectures, modalities, and tasks.
+                </p>
+                <h3 class="content-subtitle">3. Model Quantization</h3>
+                <p>
+                    Model quantization techniques that reduce the computational and memory footprint of modern 
+                    neural networks. The focus is on efficient training and deployment with minimal performance 
+                    degradation across large language, vision, and multimodal models.
                 </p>
             </div>
         </div>
