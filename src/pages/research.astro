@@ -49,7 +49,7 @@ const getLink = (path: string) => {
                     vision, and other modalities. The focus is on reducing training and inference costs while 
                     preserving strong perception, reasoning, and generalization capabilities.
                 </p>
-                <div class="research-images">
+                <div class="research-images research-images--full">
                     <img src={getLink("assets/research/FoundationModel.png")} alt="Foundation Model">
                 </div>
             </div>
@@ -237,6 +237,7 @@ const getLink = (path: string) => {
 
     .research-images { display: flex; gap: 25px; margin: 30px 0; flex-wrap: wrap; }
     .research-images img { flex: 1; min-width: 150px; max-width: calc(33% - 10px); border-radius: 8px; }
+    .research-images--full img { flex: none; width: 100%; max-width: 100%; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
