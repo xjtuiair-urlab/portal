@@ -82,6 +82,48 @@ const getLink = (path: string) => {
                     and multimodal perception for interaction in open-world environments.
                 </p>
             </div>
+            <div class="media-grid">
+                <video controls><source src={getLink("assets/research/embodied1.mp4")} type="video/mp4"></video>
+                <video controls><source src={getLink("assets/research/embodied2.mp4")} type="video/mp4"></video>
+                <video controls><source src={getLink("assets/research/embodied3.mp4")} type="video/mp4"></video>
+            </div>
+        </div>
+
+        <!-- Efficient AI Card -->
+        <div class="research-card" id="efficientai">
+            <div class="card-main">
+                <div class="card-image">
+                    <img src={getLink("assets/background/kd.png")} alt="Architecture" />
+                </div>
+                <div class="card-info">
+                    <h2 class="card-title">Efficient AI</h2>
+                    <p class="summary">
+                        Efficient AI addresses the critical challenge of maximizing model performance while 
+                        minimizing computational cost, energy consumption, and memory footprint.
+                    </p>
+                    <a href="#efficientai" class="read-more">Read More ➝</a>
+                </div>
+            </div>
+            <div class="card-details">
+                <h3 class="content-subtitle">1. Dataset Distillation</h3>
+                <p>
+                    Dataset distillation methods that compress large-scale training data into compact and highly 
+                    informative synthetic datasets. The objective is to reduce data, storage, and training costs 
+                    while retaining strong downstream performance and transferability.
+                </p>
+                <h3 class="content-subtitle">2. Knowledge Distillation</h3>
+                <p>
+                    Knowledge distillation techniques for transferring capabilities from large models to smaller 
+                    and more efficient ones. Key directions include effective knowledge representation and transfer 
+                    across architectures, modalities, and tasks.
+                </p>
+                <h3 class="content-subtitle">3. Model Quantization</h3>
+                <p>
+                    Model quantization techniques that reduce the computational and memory footprint of modern 
+                    neural networks. The focus is on efficient training and deployment with minimal performance 
+                    degradation across large language, vision, and multimodal models.
+                </p>
+            </div>
         </div>
 
         <!-- Emerging Computing Architecture Card -->
@@ -140,42 +182,6 @@ const getLink = (path: string) => {
             </div>
         </div>
 
-        <!-- Efficient AI Card -->
-        <div class="research-card" id="efficientai">
-            <div class="card-main">
-                <div class="card-image">
-                    <img src={getLink("assets/background/kd.png")} alt="Architecture" />
-                </div>
-                <div class="card-info">
-                    <h2 class="card-title">Efficient AI</h2>
-                    <p class="summary">
-                        Efficient AI addresses the critical challenge of maximizing model performance while 
-                        minimizing computational cost, energy consumption, and memory footprint.
-                    </p>
-                    <a href="#efficientai" class="read-more">Read More ➝</a>
-                </div>
-            </div>
-            <div class="card-details">
-                <h3 class="content-subtitle">1. Dataset Distillation</h3>
-                <p>
-                    Dataset distillation methods that compress large-scale training data into compact and highly 
-                    informative synthetic datasets. The objective is to reduce data, storage, and training costs 
-                    while retaining strong downstream performance and transferability.
-                </p>
-                <h3 class="content-subtitle">2. Knowledge Distillation</h3>
-                <p>
-                    Knowledge distillation techniques for transferring capabilities from large models to smaller 
-                    and more efficient ones. Key directions include effective knowledge representation and transfer 
-                    across architectures, modalities, and tasks.
-                </p>
-                <h3 class="content-subtitle">3. Model Quantization</h3>
-                <p>
-                    Model quantization techniques that reduce the computational and memory footprint of modern 
-                    neural networks. The focus is on efficient training and deployment with minimal performance 
-                    degradation across large language, vision, and multimodal models.
-                </p>
-            </div>
-        </div>
     </div>
 
 </SidebarLayout>
